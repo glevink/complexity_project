@@ -42,8 +42,12 @@ def posting2Bert(ff,n):
     if ff[-3:] == "zip":
     
         zipfile.ZipFile(ff,"r").extractall("temp")
-    
-        df = pd.read_csv(ff[:-4]+".csv",usecols=['ConsolidatedONET','JobText'])
+        
+        filename = ff.split('/')
+        
+        fileName = filename[-1:][0][:-4]
+        
+        df = pd.read_csv("temp/"+fileName+".csv",usecols=['ConsolidatedONET','JobText'])
         
     elif ff[-3:] == "csv":
         df = pd.read_csv(ff[:-4]+".csv",usecols=['ConsolidatedONET','JobText'])
@@ -199,7 +203,7 @@ def train(X,Y,nnModel,criterion,optimizer,iterations,valX,valY,plot):
 
 # Create list of files to iterate on
 
-fileList = ["../../processed_xml/US_XML_AddFeed_20071119_20071125.csv"]
+fileList = ["../../processed_xml/processed_US_XML_AddFeed_20070101_20070107.zip"]
 
 # Get a sample of postings (transformed into BERT features) and their corres
 # ponding occ codes. Also get a validation sample

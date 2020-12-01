@@ -23,7 +23,7 @@ from contextlib import closing
 # Generate a list of files which are the input for the procss over the parallelization
 # is done
 
-zipPath = "../../bgt_raw_data/Text Data/US/3.4"
+zipPath = "../../../bgt_raw_data/Text Data/US/3.4"
 processedPath = "/Users/glevinkonigsberg/Dropbox/complexity_project/processed_xml"
 
 zipFiles = []
@@ -31,6 +31,8 @@ for yyyy in os.listdir(zipPath):
     if yyyy == '.DS_Store':
         continue
     for entry in os.listdir(zipPath + "/" + yyyy):
+        if entry[-3:] != 'zip':
+            continue
         zipFiles.append(yyyy+ "/" + entry)
 
 
@@ -64,7 +66,7 @@ def processing(ff):
             newObs = pd.DataFrame(data = [values], columns = tags)
             df = df.append(newObs)
         del root
-        compression_opts = dict(method='zip', archive_name = "processed_" + ff + ".csv")  
+        compression_opts = dict(method='zip', archive_name = "processed_" + ff[5:] + ".csv")  
         df.to_csv(processedPath + "/" + "processed_" + ff[5:] + ".zip", index=False,compression=compression_opts)
         del df
         end = time.time()
@@ -79,7 +81,7 @@ def processing(ff):
     gc.collect()
 
 with closing(Pool(processes = 6)) as pool:
-    pool.map(processing,zipFiles[0:6])
+    pool.map(processing,zipFiles[31:37])
     pool.terminate()
 
 #if __name__ == '__main__':

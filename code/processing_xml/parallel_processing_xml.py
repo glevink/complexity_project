@@ -77,7 +77,7 @@ def processing(ff):
     gc.collect()
 
 with closing(Pool(processes = 6)) as pool:
-    pool.map(processing,zipFiles)
+    pool.map(processing,zipFiles[0:24])
     pool.terminate()
 
 #if __name__ == '__main__':

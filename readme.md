@@ -1,15 +1,15 @@
 This repository contains the code needed to replicate the results found in Levin-Konigsberg and Schubert (2020), “Deep Learning Deep Skills: Firm Differences in Job Tasks and Stock Market Performance”.
 
-*Authors*:
+**Authors**:
 Gabriel Levin-Konigsberg
 Gregor Schubert
 
-*Dataset*: BGC proprietary data—not publicly available.
+**Dataset**: BGC proprietary data—not publicly available.
 
-*Project description*: Even though the BLS statistics may classify an Administrative Assistant at Goldman-Sachs in NYC and one at a construction company in Wichita, KS under the same category, the tasks each perform my differ substantially.There’s no clear mapping between a job classification to the skills required in a specific job.
+**Project description**: Even though the BLS statistics may classify an Administrative Assistant at Goldman-Sachs in NYC and one at a construction company in Wichita, KS under the same category, the tasks each perform my differ substantially.There’s no clear mapping between a job classification to the skills required in a specific job.
 We intend to predict the complexity that a job requires in different dimension (e.g. leadership, social skills) based on the job description in internet postings.
 
-*Algorithms*:
+**Algorithms**:
 
 apply_model.py: Used to predict the complexity of an occupation using a posting, given a previously estimated file.
 
